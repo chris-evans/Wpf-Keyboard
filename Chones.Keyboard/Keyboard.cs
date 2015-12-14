@@ -78,8 +78,8 @@ namespace Chones.Keyboard
                 var sim = new InputSimulator();
                 if (IsShifted && !string.IsNullOrEmpty(keyboardKey.ShiftedUnicodeText))
                 { sim.Keyboard.TextEntry(keyboardKey.ShiftedUnicodeText); }
-                else if (!string.IsNullOrEmpty(keyboardKey.UnmodifiedUnicodeText))
-                { sim.Keyboard.TextEntry(keyboardKey.UnmodifiedUnicodeText); }
+                else if (!string.IsNullOrEmpty(keyboardKey.UnshiftedText))
+                { sim.Keyboard.TextEntry(keyboardKey.UnshiftedText); }
                 applied = true;
             }
 
