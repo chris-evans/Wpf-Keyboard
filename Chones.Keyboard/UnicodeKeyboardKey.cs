@@ -34,6 +34,8 @@ namespace Chones.Keyboard
             { sim.Keyboard.TextEntry(ShiftedUnicodeText); }
             else if (!string.IsNullOrEmpty(UnshiftedText))
             { sim.Keyboard.TextEntry(UnshiftedText); }
+
+            base.OnClick();
         }
     }
 }

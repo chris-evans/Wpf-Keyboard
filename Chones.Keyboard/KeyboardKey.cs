@@ -11,11 +11,8 @@ namespace Chones.Keyboard
         /// <summary>
         /// Event indicating that the shift status has been activated
         /// </summary>
-        public static readonly RoutedEvent ShiftActivatedEvent =
-            EventManager.RegisterRoutedEvent(nameof(ShiftActivated), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(KeyboardKey));
-
-        public static readonly RoutedEvent ShiftDeactivatedEvent =
-            EventManager.RegisterRoutedEvent(nameof(ShiftDeactivated), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(KeyboardKey));
+        public static readonly RoutedEvent ShiftModifiedEvent =
+            EventManager.RegisterRoutedEvent(nameof(ShiftModified), RoutingStrategy.Bubble, typeof(ShiftModifiedRoutedEventHandler), typeof(KeyboardKey));
 
         public static readonly DependencyProperty IsShiftedProperty =
             DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(KeyboardKey),
@@ -27,16 +24,10 @@ namespace Chones.Keyboard
         public static readonly DependencyProperty UnshiftedContentProperty =
             DependencyProperty.RegisterAttached(nameof(UnshiftedContent), typeof(object), typeof(KeyboardKey));
 
-        public event RoutedEventHandler ShiftActivated
+        public event ShiftModifiedRoutedEventHandler ShiftModified
         {
-            add { AddHandler(ShiftActivatedEvent, value); }
-            remove { RemoveHandler(ShiftActivatedEvent, value); }
-        }
-
-        public event RoutedEventHandler ShiftDeactivated
-        {
-            add { AddHandler(ShiftDeactivatedEvent, value); }
-            remove { RemoveHandler(ShiftDeactivatedEvent, value); }
+            add { AddHandler(ShiftModifiedEvent, value); }
+            remove { RemoveHandler(ShiftModifiedEvent, value); }
         }
 
         public bool IsShifted

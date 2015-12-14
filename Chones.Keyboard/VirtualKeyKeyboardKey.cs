@@ -27,6 +27,8 @@ namespace Chones.Keyboard
             { sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKey); }
             else
             { sim.Keyboard.KeyPress(VirtualKey); }
+
+            base.OnClick();
         }
     }
 }

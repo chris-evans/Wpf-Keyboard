@@ -74,6 +74,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ShiftKeyboardKey.cs" />
+    <Compile Include="ShiftModifiedRoutedEventArgs.cs" />
     <Compile Include="UnicodeKeyboardKey.cs" />
     <Compile Include="VirtualKeyKeyboardKey.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

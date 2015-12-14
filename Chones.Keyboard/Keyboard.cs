@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,6 +9,9 @@ namespace Chones.Keyboard
 {
     public class Keyboard : ContentControl
     {
+        public static readonly DependencyProperty IsShiftLockedProperty =
+            DependencyProperty.RegisterAttached(nameof(IsShiftLocked), typeof(bool), typeof(Keyboard));
+
         public static readonly DependencyProperty IsShiftedProperty =
             DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(Keyboard), new PropertyMetadata(new PropertyChangedCallback(IsShiftedChanged)));
 
@@ -17,11 +21,17 @@ namespace Chones.Keyboard
             set { SetValue(IsShiftedProperty, value); }
         }
 
+        public bool IsShiftLocked
+        {
+            get { return (bool)GetValue(IsShiftLockedProperty); }
+            set { SetValue(IsShiftLockedProperty, value); }
+        }
+
         static Keyboard()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Keyboard), new FrameworkPropertyMetadata(typeof(Keyboard)));
-            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftActivatedEvent, new RoutedEventHandler(OnShiftActivated));
-            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftDeactivatedEvent, new RoutedEventHandler(OnShiftDeactivated));
+            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftModifiedEvent, new ShiftModifiedRoutedEventHandler(OnShiftModified));
+            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ClickEvent, new RoutedEventHandler(OnKeyClicked));
         }
 
         public Keyboard()
@@ -30,18 +40,24 @@ namespace Chones.Keyboard
             IsTabStop = false;
         }
 
-        internal static void OnShiftActivated(object sender, RoutedEventArgs e)
+        private static void OnShiftModified(object sender, KeyboardShiftStateModifiedRoutedEventArgs e)
         { 
             var keyboard = (Keyboard)sender;
-            keyboard.IsShifted = true;
+            keyboard.IsShifted = e.Shifted;
+            keyboard.IsShiftLocked = e.Locked;
             e.Handled = true;
         }
 
-        internal static void OnShiftDeactivated(object sender, RoutedEventArgs e)
+        private static void OnKeyClicked(object sender, RoutedEventArgs e)
         {
-            var keyboard = (Keyboard)sender;
-            keyboard.IsShifted = false;
-            e.Handled = true;
+            // we will only react to changing shift behavior if the key pressed
+            // was a keyboard key
+            if (e.OriginalSource is KeyboardKey)
+            {
+                var keyboard = (Keyboard)sender;
+                if (!keyboard.IsShiftLocked && keyboard.IsShifted)
+                { keyboard.IsShifted = false; }
+            }
         }
 
         private static void IsShiftedChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
@@ -67,6 +83,5 @@ namespace Chones.Keyboard
                 }
             }
         }
-
     }
 }

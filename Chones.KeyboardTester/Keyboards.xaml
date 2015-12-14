@@ -17,6 +17,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <kbrd:ShiftKeyboardKey UnshiftedContent="SHIFT" ShiftedContent="SHIFTED" />
+            <kbrd:ShiftKeyboardKey UnshiftedContent="SHIFT (*)" ShiftedContent="SHIFTED (*)" IsShiftLocking="true"/>
         </StackPanel>
     </StackPanel>
 
