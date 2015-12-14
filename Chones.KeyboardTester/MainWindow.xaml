@@ -22,9 +22,9 @@
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0">
             <Button Name="_btnAlphaKeyboard" Content="Alpha Keyboard" Click="_btnAlphaKeyboard_Click"/>
-            <Button Name="_btnNumericKeyboard" Content="Numberic Keyboard" Click="_btnNumericKeyboard_Click" />
+            <Button Name="_btnNumericKeyboard" Content="Numeric Keyboard" Click="_btnNumericKeyboard_Click" />
         </WrapPanel>
         <TextBox Grid.Row="1" Text="Place focus here to allow keyboard text to input." />
-        <kbrd:Keyboard Grid.Row="2" Content="{Binding Path=KeyboardContent, FallbackValue={StaticResource EnglishAlpha}}"></kbrd:Keyboard>
+        <kbrd:Keyboard Grid.Row="2" x:Name="_keyboard" Content="{Binding Path=KeyboardContent, FallbackValue={StaticResource EnglishAlpha}}"></kbrd:Keyboard>
     </Grid>
 </Window>

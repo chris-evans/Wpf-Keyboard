@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Chones.Keyboard
 {
-    [TemplateVisualState(Name = "Unmodified", GroupName = "ModifiersGroup")]
+    [TemplateVisualState(Name = "Unshifted", GroupName = "ModifiersGroup")]
     [TemplateVisualState(Name = "Shifted", GroupName = "ModifiersGroup")]
     public class KeyboardKey : Control
     {
@@ -50,7 +50,7 @@ namespace Chones.Keyboard
         { VisualStateManager.GoToState(this, "Shifted", true); }
 
         internal void UnsetShifted()
-        { VisualStateManager.GoToState(this, "Unmodified", true); }
+        { VisualStateManager.GoToState(this, "Unshifted", true); }
 
         protected override void OnTouchDown(TouchEventArgs e)
         {

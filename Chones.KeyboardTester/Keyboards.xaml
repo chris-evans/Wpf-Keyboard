@@ -2,22 +2,64 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:kbrd="clr-namespace:Chones.Keyboard;assembly=Chones.Keyboard">
 
+    <Style TargetType="{x:Type kbrd:KeyboardKey}">
+        <Setter Property="Background" Value="Chartreuse"/>
+        <Setter Property="BorderBrush" Value="Purple"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+    </Style>
+
     <StackPanel x:Key="EnglishAlpha" Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="1" ShiftedContent="!" UnmodifiedUnicodeText="1" ShiftedUnicodeText="!" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="2" ShiftedContent="@" UnmodifiedUnicodeText="2" ShiftedUnicodeText="@" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="3" ShiftedContent="#" UnmodifiedUnicodeText="3" ShiftedUnicodeText="#" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="4" ShiftedContent="$" UnmodifiedUnicodeText="4" ShiftedUnicodeText="$" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="5" ShiftedContent="%" UnmodifiedUnicodeText="5" ShiftedUnicodeText="%" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="6" ShiftedContent="^" UnmodifiedUnicodeText="6" ShiftedUnicodeText="^" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="7" ShiftedContent="&amp;" UnmodifiedUnicodeText="7" ShiftedUnicodeText="&amp;" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="8" ShiftedContent="*" UnmodifiedUnicodeText="8" ShiftedUnicodeText="*" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="9" ShiftedContent="(" UnmodifiedUnicodeText="9" ShiftedUnicodeText="(" />
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="0" ShiftedContent=")" UnmodifiedUnicodeText="0" ShiftedUnicodeText=")" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="1" ShiftedContent="!" UnshiftedText="1" ShiftedUnicodeText="!" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="2" ShiftedContent="@" UnshiftedText="2" ShiftedUnicodeText="@" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="3" ShiftedContent="#" UnshiftedText="3" ShiftedUnicodeText="#" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="4" ShiftedContent="$" UnshiftedText="4" ShiftedUnicodeText="$" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="5" ShiftedContent="%" UnshiftedText="5" ShiftedUnicodeText="%" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="6" ShiftedContent="^" UnshiftedText="6" ShiftedUnicodeText="^" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="7" ShiftedContent="&amp;" UnshiftedText="7" ShiftedUnicodeText="&amp;" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="8" ShiftedContent="*" UnshiftedText="8" ShiftedUnicodeText="*" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="9" ShiftedContent="(" UnshiftedText="9" ShiftedUnicodeText="(" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="0" ShiftedContent=")" UnshiftedText="0" ShiftedUnicodeText=")" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <kbrd:ShiftKeyboardKey UnshiftedContent="SHIFT" ShiftedContent="SHIFTED" />
         </StackPanel>
     </StackPanel>
 
+    <Grid x:Key="Numeric">
+        <Grid.Resources>
+            <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource ResourceKey={x:Type kbrd:KeyboardKey}}" >
+                <Setter Property="Width" Value="NaN" />
+                <Setter Property="Height" Value="NaN" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="7" UnshiftedText="7" Grid.Row="0" Grid.Column="0"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="8" UnshiftedText="8" Grid.Row="0" Grid.Column="1"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="9" UnshiftedText="9" Grid.Row="0" Grid.Column="2"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="4" UnshiftedText="7" Grid.Row="1" Grid.Column="0"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="5" UnshiftedText="8" Grid.Row="1" Grid.Column="1"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="6" UnshiftedText="9" Grid.Row="1" Grid.Column="2"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="1" UnshiftedText="7" Grid.Row="2" Grid.Column="0"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="2" UnshiftedText="8" Grid.Row="2" Grid.Column="1"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="3" UnshiftedText="9" Grid.Row="2" Grid.Column="2"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="0" UnshiftedText="7" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <kbrd:UnicodeKeyboardKey UnshiftedContent="." UnshiftedText="." Grid.Row="3" Grid.Column="2"/>
+    </Grid>
+
+    <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource ResourceKey={x:Type kbrd:KeyboardKey}}" />
+    <Style TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource ResourceKey={x:Type kbrd:ShiftKeyboardKey}}" />
 </ResourceDictionary>
