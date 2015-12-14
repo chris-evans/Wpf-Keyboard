@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
-using WindowsInput;
-using WindowsInput.Native;
 
 namespace Chones.Keyboard
 {
@@ -21,7 +20,8 @@ namespace Chones.Keyboard
         static Keyboard()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Keyboard), new FrameworkPropertyMetadata(typeof(Keyboard)));
-            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.KeyboardKeyPressedEvent, new RoutedEventHandler(OnKeyboardKeyPressed));
+            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftActivatedEvent, new RoutedEventHandler(OnShiftActivated));
+            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftDeactivatedEvent, new RoutedEventHandler(OnShiftDeactivated));
         }
 
         public Keyboard()
@@ -30,17 +30,18 @@ namespace Chones.Keyboard
             IsTabStop = false;
         }
 
-        internal static void OnKeyboardKeyPressed(object sender, RoutedEventArgs e)
+        internal static void OnShiftActivated(object sender, RoutedEventArgs e)
+        { 
+            var keyboard = (Keyboard)sender;
+            keyboard.IsShifted = true;
+            e.Handled = true;
+        }
+
+        internal static void OnShiftDeactivated(object sender, RoutedEventArgs e)
         {
             var keyboard = (Keyboard)sender;
-
-            var applied = keyboard.ApplyForUnicode(e.OriginalSource);
-            if (!applied) keyboard.ApplyForVirtualKey(e.OriginalSource);
-            if (!applied) keyboard.ApplyForShift(e.OriginalSource);
-
-            if (applied)
-            { e.Handled = true; }
-
+            keyboard.IsShifted = false;
+            e.Handled = true;
         }
 
         private static void IsShiftedChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
@@ -48,59 +49,7 @@ namespace Chones.Keyboard
             var isShifted = (bool)e.NewValue;
             var allKeys = FindVisualChildren<KeyboardKey>(obj);
             foreach (var key in allKeys)
-            {
-                if (isShifted)
-                { key.SetShifted(); }
-                else
-                { key.UnsetShifted(); }
-            }
-        }
-
-        private bool ApplyForShift(object originalSource)
-        {
-            var applied = false;
-            var keyboardKey = originalSource as ShiftKeyboardKey;
-            if (keyboardKey != null)
-            {
-                IsShifted = !IsShifted;
-                applied = true;
-            }
-
-            return applied;
-        }
-
-        private bool ApplyForUnicode(object originalSource)
-        {
-            var applied = false;
-            var keyboardKey = originalSource as UnicodeKeyboardKey;
-            if (keyboardKey != null)
-            {
-                var sim = new InputSimulator();
-                if (IsShifted && !string.IsNullOrEmpty(keyboardKey.ShiftedUnicodeText))
-                { sim.Keyboard.TextEntry(keyboardKey.ShiftedUnicodeText); }
-                else if (!string.IsNullOrEmpty(keyboardKey.UnshiftedText))
-                { sim.Keyboard.TextEntry(keyboardKey.UnshiftedText); }
-                applied = true;
-            }
-
-            return applied;
-        }
-
-        private bool ApplyForVirtualKey(object originalSource)
-        {
-            var applied = false;
-            var keyboardKey = originalSource as VirtualKeyKeyboardKey;
-            if (keyboardKey != null)
-            {
-                var sim = new InputSimulator();
-                if (IsShifted)
-                { sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, keyboardKey.VirtualKey); }
-                else
-                { sim.Keyboard.KeyPress(keyboardKey.VirtualKey); }
-                applied = true;
-            }
-
-            return applied;
+            { key.IsShifted = isShifted; }
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

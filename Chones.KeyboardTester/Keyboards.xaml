@@ -2,14 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:kbrd="clr-namespace:Chones.Keyboard;assembly=Chones.Keyboard">
 
-    <Style TargetType="{x:Type kbrd:KeyboardKey}">
-        <Setter Property="Background" Value="Chartreuse"/>
-        <Setter Property="BorderBrush" Value="Purple"/>
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Width" Value="40" />
-        <Setter Property="Height" Value="40" />
-    </Style>
-
     <StackPanel x:Key="EnglishAlpha" Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <kbrd:UnicodeKeyboardKey UnshiftedContent="1" ShiftedContent="!" UnshiftedText="1" ShiftedUnicodeText="!" />
@@ -29,12 +21,6 @@
     </StackPanel>
 
     <Grid x:Key="Numeric">
-        <Grid.Resources>
-            <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource ResourceKey={x:Type kbrd:KeyboardKey}}" >
-                <Setter Property="Width" Value="NaN" />
-                <Setter Property="Height" Value="NaN" />
-            </Style>
-        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -59,7 +45,4 @@
         <kbrd:UnicodeKeyboardKey UnshiftedContent="0" UnshiftedText="7" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
         <kbrd:UnicodeKeyboardKey UnshiftedContent="." UnshiftedText="." Grid.Row="3" Grid.Column="2"/>
     </Grid>
-
-    <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource ResourceKey={x:Type kbrd:KeyboardKey}}" />
-    <Style TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource ResourceKey={x:Type kbrd:ShiftKeyboardKey}}" />
 </ResourceDictionary>

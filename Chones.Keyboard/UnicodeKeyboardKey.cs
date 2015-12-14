@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WindowsInput;
 
 namespace Chones.Keyboard
 {
@@ -24,6 +25,15 @@ namespace Chones.Keyboard
         static UnicodeKeyboardKey()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(UnicodeKeyboardKey), new FrameworkPropertyMetadata(typeof(UnicodeKeyboardKey)));
+        }
+
+        protected override void OnClick()
+        {
+            var sim = new InputSimulator();
+            if (IsShifted && !string.IsNullOrEmpty(ShiftedUnicodeText))
+            { sim.Keyboard.TextEntry(ShiftedUnicodeText); }
+            else if (!string.IsNullOrEmpty(UnshiftedText))
+            { sim.Keyboard.TextEntry(UnshiftedText); }
         }
     }
 }

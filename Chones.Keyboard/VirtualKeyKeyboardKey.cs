@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WindowsInput;
 using WindowsInput.Native;
 
 namespace Chones.Keyboard
@@ -17,6 +18,15 @@ namespace Chones.Keyboard
         static VirtualKeyKeyboardKey()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(VirtualKeyKeyboardKey), new FrameworkPropertyMetadata(typeof(VirtualKeyKeyboardKey)));
+        }
+
+        protected override void OnClick()
+        {
+            var sim = new InputSimulator();
+            if (IsShifted)
+            { sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKey); }
+            else
+            { sim.Keyboard.KeyPress(VirtualKey); }
         }
     }
 }

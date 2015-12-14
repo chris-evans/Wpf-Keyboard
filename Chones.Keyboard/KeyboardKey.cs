@@ -6,10 +6,20 @@ namespace Chones.Keyboard
 {
     [TemplateVisualState(Name = "Unshifted", GroupName = "ModifiersGroup")]
     [TemplateVisualState(Name = "Shifted", GroupName = "ModifiersGroup")]
-    public class KeyboardKey : Control
+    public class KeyboardKey : Button
     {
-        public static readonly RoutedEvent KeyboardKeyPressedEvent =
-            EventManager.RegisterRoutedEvent(nameof(KeyboardKeyPressed), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(KeyboardKey));
+        /// <summary>
+        /// Event indicating that the shift status has been activated
+        /// </summary>
+        public static readonly RoutedEvent ShiftActivatedEvent =
+            EventManager.RegisterRoutedEvent(nameof(ShiftActivated), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(KeyboardKey));
+
+        public static readonly RoutedEvent ShiftDeactivatedEvent =
+            EventManager.RegisterRoutedEvent(nameof(ShiftDeactivated), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(KeyboardKey));
+
+        public static readonly DependencyProperty IsShiftedProperty =
+            DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(KeyboardKey),
+                new PropertyMetadata(false, new PropertyChangedCallback(OnIsShiftedChanged)));
 
         public static readonly DependencyProperty ShiftedContentProperty =
             DependencyProperty.RegisterAttached(nameof(ShiftedContent), typeof(object), typeof(KeyboardKey));
@@ -17,10 +27,22 @@ namespace Chones.Keyboard
         public static readonly DependencyProperty UnshiftedContentProperty =
             DependencyProperty.RegisterAttached(nameof(UnshiftedContent), typeof(object), typeof(KeyboardKey));
 
-        public event RoutedEventHandler KeyboardKeyPressed
+        public event RoutedEventHandler ShiftActivated
         {
-            add { AddHandler(KeyboardKeyPressedEvent, value); }
-            remove { RemoveHandler(KeyboardKeyPressedEvent, value); }
+            add { AddHandler(ShiftActivatedEvent, value); }
+            remove { RemoveHandler(ShiftActivatedEvent, value); }
+        }
+
+        public event RoutedEventHandler ShiftDeactivated
+        {
+            add { AddHandler(ShiftDeactivatedEvent, value); }
+            remove { RemoveHandler(ShiftDeactivatedEvent, value); }
+        }
+
+        public bool IsShifted
+        {
+            get { return (bool)GetValue(IsShiftedProperty); }
+            set { SetValue(IsShiftedProperty, value); }
         }
 
         public object ShiftedContent
@@ -44,25 +66,29 @@ namespace Chones.Keyboard
         {
             Focusable = false;
             IsTabStop = false;
+            IsShifted = false;
         }
 
-        internal void SetShifted()
-        { VisualStateManager.GoToState(this, "Shifted", true); }
-
-        internal void UnsetShifted()
-        { VisualStateManager.GoToState(this, "Unshifted", true); }
-
-        protected override void OnTouchDown(TouchEventArgs e)
+        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
         {
-            base.OnTouchDown(e);
-            RaiseEvent(new RoutedEventArgs(KeyboardKeyPressedEvent, this));
+            Content = IsShifted ? ShiftedContent : UnshiftedContent;
+            base.OnTemplateChanged(oldTemplate, newTemplate);
         }
 
-        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        private static void OnIsShiftedChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            e.Handled = true;
-            base.OnMouseLeftButtonUp(e);
-            RaiseEvent(new RoutedEventArgs(KeyboardKeyPressedEvent, this));
+            var keyboardKey = (KeyboardKey)obj;
+
+            if ((bool) e.NewValue)
+            {
+                keyboardKey.Content = keyboardKey.ShiftedContent;
+                VisualStateManager.GoToState(keyboardKey, "Shifted", true);
+            }
+            else
+            {
+                keyboardKey.Content = keyboardKey.UnshiftedContent;
+                VisualStateManager.GoToState(keyboardKey, "Unshifted", true);
+            }
         }
     }
 }
