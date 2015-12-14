@@ -1,4 +1,5 @@
 # WpfKeyboard
+```xml
 
 I have been trying to find a good on screen keyboard that I could use in a locked down kiosk based environment.  Many of the keyboards I did find were built to run out of process and also had their own keyboard designers built in.  Although this worked I always found myself working aroudn limitations this created.
   *  The keyboard ran out of process requiring IPC to hide/show the keyboard.  This was prone to breaking
