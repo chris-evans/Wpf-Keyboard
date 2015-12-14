@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:kbrd="clr-namespace:Chones.Keyboard;assembly=Chones.Keyboard">
+
+    <StackPanel x:Key="EnglishAlpha" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="1" ShiftedContent="!" UnmodifiedUnicodeText="1" ShiftedUnicodeText="!" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="2" ShiftedContent="@" UnmodifiedUnicodeText="2" ShiftedUnicodeText="@" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="3" ShiftedContent="#" UnmodifiedUnicodeText="3" ShiftedUnicodeText="#" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="4" ShiftedContent="$" UnmodifiedUnicodeText="4" ShiftedUnicodeText="$" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="5" ShiftedContent="%" UnmodifiedUnicodeText="5" ShiftedUnicodeText="%" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="6" ShiftedContent="^" UnmodifiedUnicodeText="6" ShiftedUnicodeText="^" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="7" ShiftedContent="&amp;" UnmodifiedUnicodeText="7" ShiftedUnicodeText="&amp;" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="8" ShiftedContent="*" UnmodifiedUnicodeText="8" ShiftedUnicodeText="*" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="9" ShiftedContent="(" UnmodifiedUnicodeText="9" ShiftedUnicodeText="(" />
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="0" ShiftedContent=")" UnmodifiedUnicodeText="0" ShiftedUnicodeText=")" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <kbrd:ShiftKeyboardKey UnshiftedContent="SHIFT" ShiftedContent="SHIFTED" />
+        </StackPanel>
+    </StackPanel>
+
+</ResourceDictionary>

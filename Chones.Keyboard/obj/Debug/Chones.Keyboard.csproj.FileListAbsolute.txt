@@ -1,0 +1,14 @@
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard.csprojResolveAssemblyReference.cache
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard_MarkupCompile.cache
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard_MarkupCompile.lref
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard.dll
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard.pdb
+C:\src\github\WpfKeyboard\Chones.Keyboard\bin\Debug\Chones.Keyboard.dll
+C:\src\github\WpfKeyboard\Chones.Keyboard\bin\Debug\Chones.Keyboard.pdb
+C:\src\github\WpfKeyboard\Chones.Keyboard\bin\Debug\WindowsInput.dll
+C:\src\github\WpfKeyboard\Chones.Keyboard\bin\Debug\WindowsInput.xml
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Themes\Generic.baml
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard.g.resources
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard.Properties.Resources.resources
+C:\src\github\WpfKeyboard\Chones.Keyboard\obj\Debug\Chones.Keyboard.csproj.GenerateResource.Cache
