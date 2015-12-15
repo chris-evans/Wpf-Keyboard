@@ -100,7 +100,7 @@
             <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="up" ShiftedContent="up" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="9"/>
             <kbrd:VirtualKeyKeyboardKey VirtualKey="RETURN" UnshiftedContent="Enter" ShiftedContent="Enter" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"/>
 
-            <kbrd:ShiftKeyboardKey UnshiftedContent="Shift" ShiftedContent="Shift" IsShiftLocking="true" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="0"/>
+            <kbrd:ShiftKeyboardKey UnshiftedContent="Shift" ShiftedContent="Shift" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="0"/>
             <kbrd:CapsKeyboardKey UnshiftedContent="CAPS" ShiftedContent="CAPS" Grid.Row="4" ShiftOnCapsLock="false" Grid.Column="1"/>
             <kbrd:ShiftKeyboardKey UnshiftedContent="!@$" ShiftedContent="!@$" Grid.Row="4" ShiftOnCapsLock="false" Grid.Column="2"/>
             <kbrd:VirtualKeyKeyboardKey VirtualKey="SPACE" ShiftedContent="Space" UnshiftedContent="Space" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="5"/>
