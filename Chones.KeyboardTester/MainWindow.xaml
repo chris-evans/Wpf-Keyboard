@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Chones.KeyboardTester"
         xmlns:kbrd="clr-namespace:Chones.Keyboard;assembly=Chones.Keyboard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="1440">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,6 +25,6 @@
             <Button Name="_btnNumericKeyboard" Content="Numeric Keyboard" Click="_btnNumericKeyboard_Click" />
         </WrapPanel>
         <TextBox Grid.Row="1" Text="Place focus here to allow keyboard text to input." />
-        <kbrd:Keyboard Grid.Row="2" x:Name="_keyboard" Content="{Binding Path=KeyboardContent, FallbackValue={StaticResource EnglishAlpha}}"></kbrd:Keyboard>
+        <kbrd:Keyboard Grid.Row="2" x:Name="_keyboard" Content="{Binding Path=KeyboardContent, FallbackValue={StaticResource Sled_AlphaEnglish}}"></kbrd:Keyboard>
     </Grid>
 </Window>
