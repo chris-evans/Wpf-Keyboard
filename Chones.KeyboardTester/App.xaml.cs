@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Chones.KeyboardTester
+namespace Rife.KeyboardTester
 {
     /// <summary>
     /// Interaction logic for App.xaml

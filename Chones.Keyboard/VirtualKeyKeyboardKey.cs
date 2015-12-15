@@ -2,7 +2,7 @@
 using WindowsInput;
 using WindowsInput.Native;
 
-namespace Chones.Keyboard
+namespace Rife.Keyboard
 {
     public class VirtualKeyKeyboardKey : KeyboardKey
     {

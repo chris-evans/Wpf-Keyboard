@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Chones.Keyboard
+namespace Rife.Keyboard
 {
     public delegate void ModifierChangedRoutedEventHandler(object sender, ModifierChangedRoutedEventArgs e);
 

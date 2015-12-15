@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Chones.Keyboard">
+    xmlns:local="clr-namespace:Rife.Keyboard">
 
     <Style TargetType="{x:Type local:Keyboard}">
         <Setter Property="Template">

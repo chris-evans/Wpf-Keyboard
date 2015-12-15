@@ -7,8 +7,8 @@
     <ProjectGuid>{509B83A4-5A23-4B13-8807-A56C66C4D8E4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Chones.KeyboardTester</RootNamespace>
-    <AssemblyName>Chones.KeyboardTester</AssemblyName>
+    <RootNamespace>Rife.KeyboardTester</RootNamespace>
+    <AssemblyName>Rife.KeyboardTester</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -105,9 +105,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chones.Keyboard\Chones.Keyboard.csproj">
+    <ProjectReference Include="..\Chones.Keyboard\Rife.Keyboard.csproj">
       <Project>{efc4cf3a-a974-4e68-b8a3-2b3cd2a42484}</Project>
-      <Name>Chones.Keyboard</Name>
+      <Name>Rife.Keyboard</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

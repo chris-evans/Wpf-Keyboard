@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chones.Keyboard", "Chones.Keyboard\Chones.Keyboard.csproj", "{EFC4CF3A-A974-4E68-B8A3-2B3CD2A42484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rife.Keyboard", "Chones.Keyboard\Rife.Keyboard.csproj", "{EFC4CF3A-A974-4E68-B8A3-2B3CD2A42484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chones.KeyboardTester", "Chones.KeyboardTester\Chones.KeyboardTester.csproj", "{509B83A4-5A23-4B13-8807-A56C66C4D8E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rife.KeyboardTester", "Chones.KeyboardTester\Rife.KeyboardTester.csproj", "{509B83A4-5A23-4B13-8807-A56C66C4D8E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

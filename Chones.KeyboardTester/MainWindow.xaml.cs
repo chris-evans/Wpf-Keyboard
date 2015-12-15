@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace Chones.KeyboardTester
+namespace Rife.KeyboardTester
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

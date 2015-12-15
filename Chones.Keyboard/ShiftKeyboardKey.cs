@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Chones.Keyboard
+namespace Rife.Keyboard
 {
     public class ShiftKeyboardKey : KeyboardKey
     {

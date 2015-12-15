@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Chones.Keyboard
+namespace Rife.Keyboard
 {
     [TemplateVisualState(Name = "NotShifted", GroupName = "ShiftedGroup")]
     [TemplateVisualState(Name = "Shifted", GroupName = "ShiftedGroup")]

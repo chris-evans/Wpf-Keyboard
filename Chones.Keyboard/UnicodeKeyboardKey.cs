@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using WindowsInput;
 
-namespace Chones.Keyboard
+namespace Rife.Keyboard
 {
     public class UnicodeKeyboardKey : KeyboardKey
     {
