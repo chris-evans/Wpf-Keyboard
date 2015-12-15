@@ -25,6 +25,6 @@
             <Button Name="_btnNumericKeyboard" Content="Numeric Keyboard" Click="_btnNumericKeyboard_Click" />
         </WrapPanel>
         <TextBox Grid.Row="1" Text="Place focus here to allow keyboard text to input." />
-        <kbrd:Keyboard Grid.Row="2" x:Name="_keyboard" Content="{Binding Path=KeyboardContent, FallbackValue={StaticResource Sled_AlphaEnglish}}"></kbrd:Keyboard>
+        <kbrd:Keyboard Grid.Row="2" x:Name="_keyboard" Background="#FFCCCCCC" Content="{Binding Path=KeyboardContent, FallbackValue={StaticResource Sled_AlphaEnglish}}"></kbrd:Keyboard>
     </Grid>
 </Window>

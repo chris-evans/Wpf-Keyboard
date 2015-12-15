@@ -3,10 +3,8 @@
                     xmlns:kbrd="clr-namespace:Chones.Keyboard;assembly=Chones.Keyboard"
                     xmlns:vk="clr-namespace:WindowsInput.Native">
 
-    <SolidColorBrush x:Key="KeyboardBackgroundBrush" Color="#FFCCCCCC" />
-    <Style x:Key="KeyboardKeyStyle" TargetType="{x:Type kbrd:KeyboardKey}">
+    <Style x:Key="BasicKeyStyling" TargetType="{x:Type ContentControl}">
         <Setter Property="Background" Value="White" />
-        <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="2" />
         <Setter Property="FontFamily" Value="Helvetica" />
         <Setter Property="FontSize" Value="36" />
@@ -14,17 +12,21 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <Grid x:Key="Sled_AlphaEnglish" Height="500" Width="NaN" HorizontalAlignment="Center" Margin="0,10,0,10" Background="{StaticResource ResourceKey=KeyboardBackgroundBrush}">
+    <Style x:Key="StandardKeyboardKeyStyle" TargetType="{x:Type kbrd:KeyboardKey}" BasedOn="{StaticResource BasicKeyStyling}"/>
+    <Style x:Key="ShiftKeyboardKeyStyle" TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource BasicKeyStyling}">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    <Style x:Key="CapsKeyboardKeyStyle" TargetType="{x:Type kbrd:CapsKeyboardKey}" BasedOn="{StaticResource BasicKeyStyling}">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Grid x:Key="Sled_AlphaEnglish" Height="500" Width="NaN" HorizontalAlignment="Center" Margin="0,10,0,10">
         <Grid HorizontalAlignment="Center">
             <Grid.Resources>
-                <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}"/>
-                <Style TargetType="{x:Type kbrd:VirtualKeyKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}"/>
-                <Style TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}">
-                    <Setter Property="ModifierAppliedBackground" Value="Purple" />
-                </Style>
-                <Style TargetType="{x:Type kbrd:CapsKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}" >
-                    <Setter Property="ModifierAppliedBackground" Value="Purple" />
-                </Style>
+                <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource StandardKeyboardKeyStyle}"/>
+                <Style TargetType="{x:Type kbrd:VirtualKeyKeyboardKey}" BasedOn="{StaticResource StandardKeyboardKeyStyle}"/>
+                <Style TargetType="{x:Type kbrd:CapsKeyboardKey}" BasedOn="{StaticResource CapsKeyboardKeyStyle}" />
+                <Style TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource ShiftKeyboardKeyStyle}" />
             </Grid.Resources>
 
             <Grid.RowDefinitions>
@@ -60,7 +62,7 @@
             <kbrd:UnicodeKeyboardKey UnshiftedContent="8" ShiftedContent="*" UnshiftedText="8" ShiftedUnicodeText="*" ShiftOnCapsLock="false" Grid.Row="0" Grid.Column="7"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="9" ShiftedContent="(" UnshiftedText="9" ShiftedUnicodeText="(" ShiftOnCapsLock="false" Grid.Row="0" Grid.Column="8"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="0" ShiftedContent=")" UnshiftedText="0" ShiftedUnicodeText=")" ShiftOnCapsLock="false" Grid.Row="0" Grid.Column="9"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="BACK" ShiftedContent="arrow" UnshiftedContent="arrow" Grid.Row="0" ShiftOnCapsLock="false" Grid.Column="10" Grid.ColumnSpan="2" />
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="BACK" ShiftedContent="&#9003;" UnshiftedContent="&#9003;" Grid.Row="0" ShiftOnCapsLock="false" Grid.Column="10" Grid.ColumnSpan="2"  FontFamily="Consolas" FontSize="45"/>
 
             <kbrd:UnicodeKeyboardKey UnshiftedContent="q" ShiftedContent="Q" UnshiftedText="q" ShiftedUnicodeText="Q" Grid.Row="1" Grid.Column="0"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="w" ShiftedContent="W" UnshiftedText="w" ShiftedUnicodeText="W" Grid.Row="1" Grid.Column="1"/>
@@ -85,10 +87,10 @@
             <kbrd:UnicodeKeyboardKey UnshiftedContent="k" ShiftedContent="K" UnshiftedText="k" ShiftedUnicodeText="K" Grid.Row="2" Grid.Column="7"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="l" ShiftedContent="L" UnshiftedText="l" ShiftedUnicodeText="L" Grid.Row="2" Grid.Column="8"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="." ShiftedContent="&gt;" UnshiftedText="." ShiftedUnicodeText="&gt;" ShiftOnCapsLock="false" Grid.Row="2" Grid.Column="9"/>
-            <kbrd:UnicodeKeyboardKey UnshiftedContent="@" ShiftedContent="@" UnshiftedText="@" ShiftedUnicodeText="@" ShiftOnCapsLock="false" Grid.Row="2" Grid.Column="10"/>
-            <kbrd:UnicodeKeyboardKey UnshiftedContent=".com" ShiftedContent=".com" UnshiftedText=".com" ShiftedUnicodeText=".com" ShiftOnCapsLock="false" Grid.Row="2" Grid.Column="11"/>
+            <kbrd:UnicodeKeyboardKey UnshiftedContent="@" ShiftedContent="+" UnshiftedText="@" ShiftedUnicodeText="+" ShiftOnCapsLock="false" Grid.Row="2" Grid.Column="10"/>
+            <kbrd:UnicodeKeyboardKey UnshiftedContent=".com" ShiftedContent=".com" UnshiftedText=".com" ShiftedUnicodeText=".com" ShiftOnCapsLock="false" FontSize="30" Grid.Row="2" Grid.Column="11"/>
 
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="TAB" UnshiftedContent="Tab" ShiftedContent="Tab" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="0"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="TAB" UnshiftedContent="Tab" ShiftedContent="Tab" FontSize="30" Grid.Row="3" Grid.Column="0"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="z" ShiftedContent="Z" UnshiftedText="z" ShiftedUnicodeText="Z" Grid.Row="3" Grid.Column="1"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="x" ShiftedContent="X" UnshiftedText="x" ShiftedUnicodeText="X" Grid.Row="3" Grid.Column="2"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="c" ShiftedContent="C" UnshiftedText="c" ShiftedUnicodeText="C" Grid.Row="3" Grid.Column="3"/>
@@ -97,27 +99,25 @@
             <kbrd:UnicodeKeyboardKey UnshiftedContent="n" ShiftedContent="N" UnshiftedText="n" ShiftedUnicodeText="N" Grid.Row="3" Grid.Column="6"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="m" ShiftedContent="M" UnshiftedText="m" ShiftedUnicodeText="M" Grid.Row="3" Grid.Column="7"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="'" ShiftedContent="&quot;" UnshiftedText="'" ShiftedUnicodeText="&quot;" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="8"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="up" ShiftedContent="up" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="9"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="RETURN" UnshiftedContent="Enter" ShiftedContent="Enter" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="&#9650;" ShiftedContent="&#9650;" ShiftOnCapsLock="false" Grid.Row="3" Grid.Column="9" FontFamily="Consolas" FontSize="46"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="RETURN" UnshiftedContent="Enter" ShiftedContent="Enter" ShiftOnCapsLock="false" FontSize="30" Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"/>
 
-            <kbrd:ShiftKeyboardKey UnshiftedContent="Shift" ShiftedContent="Shift" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="0"/>
-            <kbrd:CapsKeyboardKey UnshiftedContent="CAPS" ShiftedContent="CAPS" Grid.Row="4" ShiftOnCapsLock="false" Grid.Column="1"/>
-            <kbrd:ShiftKeyboardKey UnshiftedContent="!@$" ShiftedContent="!@$" Grid.Row="4" ShiftOnCapsLock="false" Grid.Column="2"/>
+            <kbrd:ShiftKeyboardKey UnshiftedContent="Shift (!@#)" ShiftedContent="Shift (!@#)" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <kbrd:CapsKeyboardKey UnshiftedContent="CAPS" ShiftedContent="CAPS" Grid.Row="4" ShiftOnCapsLock="false" Grid.Column="2"/>
             <kbrd:VirtualKeyKeyboardKey VirtualKey="SPACE" ShiftedContent="Space" UnshiftedContent="Space" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="5"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="LEFT" ShiftedContent="left" UnshiftedContent="left" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="8"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="DOWN" ShiftedContent="down" UnshiftedContent="down" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="9"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="RIGHT" ShiftedContent="right" UnshiftedContent="right" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="10"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="LEFT" ShiftedContent="&#9668;" UnshiftedContent="&#9668;" ShiftOnCapsLock="False" Grid.Row="4" Grid.Column="8" FontFamily="Consolas" FontSize="60"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="DOWN" ShiftedContent="&#9660;" UnshiftedContent="&#9660;" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="9" FontFamily="Consolas" FontSize="46"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="RIGHT" ShiftedContent="&#9658;" UnshiftedContent="&#9658;" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="10" FontFamily="Consolas" FontSize="60"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="-" ShiftedContent="_" UnshiftedText="-" ShiftedUnicodeText="_" ShiftOnCapsLock="false" Grid.Row="4" Grid.Column="11"/>
         </Grid>
     </Grid>
 
-    <Grid x:Key="Sled_NumericEnglish" Height="500" Width="NaN" HorizontalAlignment="Center" Margin="0,10,0,10" Background="{StaticResource ResourceKey=KeyboardBackgroundBrush}">
+    <Grid x:Key="Sled_NumericEnglish" Height="500" Width="NaN" HorizontalAlignment="Center" Margin="0,10,0,10" Background="Transparent">
         <Grid HorizontalAlignment="Center">
             <Grid.Resources>
-                <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}"/>
-                <Style TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}"/>
-                <Style TargetType="{x:Type kbrd:VirtualKeyKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}" />
-                <!-- put some custom resource here for how we want stuff to look -->
+                <Style TargetType="{x:Type kbrd:UnicodeKeyboardKey}" BasedOn="{StaticResource StandardKeyboardKeyStyle}"/>
+                <Style TargetType="{x:Type kbrd:ShiftKeyboardKey}" BasedOn="{StaticResource ShiftKeyboardKeyStyle}"/>
+                <Style TargetType="{x:Type kbrd:VirtualKeyKeyboardKey}" BasedOn="{StaticResource StandardKeyboardKeyStyle}" />
             </Grid.Resources>
 
             <Grid.RowDefinitions>
@@ -140,7 +140,7 @@
             <kbrd:UnicodeKeyboardKey UnshiftedContent="8" UnshiftedText="8" Grid.Row="0" Grid.Column="1"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="9" UnshiftedText="9" Grid.Row="0" Grid.Column="2"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="'" UnshiftedText="'" Grid.Row="0" Grid.Column="3"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="BACK" UnshiftedContent="back" Grid.Row="0" Grid.Column="4" />
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="BACK" UnshiftedContent="&#9003;" Grid.Row="0" Grid.Column="4" FontFamily="Consolas" FontSize="45" />
 
             <kbrd:UnicodeKeyboardKey UnshiftedContent="4" UnshiftedText="4" Grid.Row="1" Grid.Column="0"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="5" UnshiftedText="5" Grid.Row="1" Grid.Column="1"/>
@@ -151,13 +151,13 @@
             <kbrd:UnicodeKeyboardKey UnshiftedContent="1" UnshiftedText="1" Grid.Row="2" Grid.Column="0"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="2" UnshiftedText="2" Grid.Row="2" Grid.Column="1"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="3" UnshiftedText="3" Grid.Row="2" Grid.Column="2"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="up" Grid.Row="2" Grid.Column="3"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="&#9650;" Grid.Row="2" Grid.Column="3"  FontFamily="Consolas" FontSize="46"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="-" UnshiftedText="-" Grid.Row="2" Grid.Column="4"/>
 
             <kbrd:UnicodeKeyboardKey UnshiftedContent="0" UnshiftedText="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="LEFT" UnshiftedContent="left" Grid.Row="3" Grid.Column="2"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="DOWN" UnshiftedContent="down" Grid.Row="3" Grid.Column="3"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="RIGHT" UnshiftedContent="right" Grid.Row="3" Grid.Column="4"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="LEFT" UnshiftedContent="&#9668;" Grid.Row="3" Grid.Column="2" FontFamily="Consolas" FontSize="60"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="DOWN" UnshiftedContent="&#9660;" Grid.Row="3" Grid.Column="3"  FontFamily="Consolas" FontSize="46"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="RIGHT" UnshiftedContent="&#9658;" Grid.Row="3" Grid.Column="4" FontFamily="Consolas" FontSize="60"/>
 
             <kbrd:VirtualKeyKeyboardKey VirtualKey="SPACE" UnshiftedContent="Space" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" />
         </Grid>

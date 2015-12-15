@@ -2,7 +2,7 @@
 
 namespace Chones.Keyboard
 {
-    public class CapsKeyboardKey : VirtualKeyKeyboardKey
+    public class CapsKeyboardKey : KeyboardKey
     {
         static CapsKeyboardKey()
         { DefaultStyleKeyProperty.OverrideMetadata(typeof(CapsKeyboardKey), new FrameworkPropertyMetadata(typeof(CapsKeyboardKey))); }

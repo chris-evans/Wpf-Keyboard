@@ -21,12 +21,6 @@ namespace Chones.Keyboard
         public static readonly RoutedEvent CapsModifierChangedProperty =
             EventManager.RegisterRoutedEvent(nameof(CapsModifierChanged), RoutingStrategy.Bubble, typeof(ModifierChangedRoutedEventHandler), typeof(KeyboardKey));
 
-        public static readonly DependencyProperty ModifierAppliedBackgroundProperty =
-            DependencyProperty.RegisterAttached(nameof(ModifierAppliedBackground), typeof(Brush), typeof(KeyboardKey));
-
-        public static readonly DependencyProperty NoModifierAppliedBackgroundProperty =
-            DependencyProperty.RegisterAttached(nameof(NoModifierAppliedBackground), typeof(Brush), typeof(KeyboardKey));
-
         public static readonly DependencyProperty IsShiftedProperty =
             DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(KeyboardKey),
                 new PropertyMetadata(false, new PropertyChangedCallback(OnIsShiftedChanged)));
@@ -55,18 +49,6 @@ namespace Chones.Keyboard
         {
             add { AddHandler(CapsModifierChangedProperty, value); }
             remove { RemoveHandler(CapsModifierChangedProperty, value); }
-        }
-
-        public Brush ModifierAppliedBackground
-        {
-            get { return (Brush)GetValue(ModifierAppliedBackgroundProperty); }
-            set { SetValue(ModifierAppliedBackgroundProperty, value); }
-        }
-
-        public Brush NoModifierAppliedBackground
-        {
-            get { return (Brush)GetValue(NoModifierAppliedBackgroundProperty); }
-            set { SetValue(NoModifierAppliedBackgroundProperty, value); }
         }
 
         public bool IsShifted
