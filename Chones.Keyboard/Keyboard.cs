@@ -15,6 +15,9 @@ namespace Chones.Keyboard
         public static readonly DependencyProperty IsShiftedProperty =
             DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(Keyboard), new PropertyMetadata(new PropertyChangedCallback(IsShiftedChanged)));
 
+        public static readonly DependencyProperty IsCapsLockedProperty =
+            DependencyProperty.RegisterAttached(nameof(IsCapsLocked), typeof(bool), typeof(Keyboard), new PropertyMetadata(new PropertyChangedCallback(IsCapsLockedChanged)));
+
         public bool IsShifted
         {
             get { return (bool)GetValue(IsShiftedProperty); }
@@ -27,10 +30,17 @@ namespace Chones.Keyboard
             set { SetValue(IsShiftLockedProperty, value); }
         }
 
+        public bool IsCapsLocked
+        {
+            get { return (bool)GetValue(IsCapsLockedProperty); }
+            set { SetValue(IsCapsLockedProperty, value); }
+        }
+
         static Keyboard()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Keyboard), new FrameworkPropertyMetadata(typeof(Keyboard)));
-            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftModifiedEvent, new ShiftModifiedRoutedEventHandler(OnShiftModified));
+            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftModifierChangedProperty, new ModifierChangedRoutedEventHandler(OnShiftModified));
+            EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.CapsModifierChangedProperty, new ModifierChangedRoutedEventHandler(OnCapsModified));
             EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ClickEvent, new RoutedEventHandler(OnKeyClicked));
         }
 
@@ -40,11 +50,18 @@ namespace Chones.Keyboard
             IsTabStop = false;
         }
 
-        private static void OnShiftModified(object sender, KeyboardShiftStateModifiedRoutedEventArgs e)
+        private static void OnShiftModified(object sender, ModifierChangedRoutedEventArgs e)
         { 
             var keyboard = (Keyboard)sender;
-            keyboard.IsShifted = e.Shifted;
+            keyboard.IsShifted = e.Applied;
             keyboard.IsShiftLocked = e.Locked;
+            e.Handled = true;
+        }
+
+        private static void OnCapsModified(object sender, ModifierChangedRoutedEventArgs e)
+        {
+            var keyboard = (Keyboard)sender;
+            keyboard.IsCapsLocked = e.Applied;
             e.Handled = true;
         }
 
@@ -66,6 +83,14 @@ namespace Chones.Keyboard
             var allKeys = FindVisualChildren<KeyboardKey>(obj);
             foreach (var key in allKeys)
             { key.IsShifted = isShifted; }
+        }
+
+        private static void IsCapsLockedChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            var isCapsLocked = (bool)e.NewValue;
+            var allKeys = FindVisualChildren<KeyboardKey>(obj);
+            foreach (var key in allKeys)
+            { key.IsCapsLocked = isCapsLocked; }
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

@@ -15,7 +15,9 @@
 
     <Style x:Key="KeyboardKeyStyle" TargetType="{x:Type local:KeyboardKey}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-        <Setter Property="Background" Value="#FF1F3B53"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="ModifierAppliedBackground" Value="White"/>
+        <Setter Property="NoModifierAppliedBackground" Value="White"/>
         <Setter Property="Foreground" Value="#FF000000"/>
         <Setter Property="Padding" Value="3"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -90,5 +92,6 @@
     <Style TargetType="{x:Type local:UnicodeKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}" />
     <Style TargetType="{x:Type local:VirtualKeyKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}" />
     <Style TargetType="{x:Type local:ShiftKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}" />
+    <Style TargetType="{x:Type local:CapsKeyboardKey}" BasedOn="{StaticResource KeyboardKeyStyle}" />
 
 </ResourceDictionary>

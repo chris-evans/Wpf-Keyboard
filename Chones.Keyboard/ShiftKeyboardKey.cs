@@ -19,9 +19,7 @@ namespace Chones.Keyboard
 
         protected override void OnClick()
         {
-            base.OnClick();
-
-            var eventArgs = new KeyboardShiftStateModifiedRoutedEventArgs(KeyboardKey.ShiftModifiedEvent, this, !this.IsShifted, IsShiftLocking);
+            var eventArgs = new ModifierChangedRoutedEventArgs(KeyboardKey.ShiftModifierChangedProperty, this, !this.IsShifted, IsShiftLocking);
             RaiseEvent(eventArgs);
         }
     }

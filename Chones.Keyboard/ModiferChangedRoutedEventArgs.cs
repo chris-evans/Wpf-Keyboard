@@ -2,17 +2,17 @@
 
 namespace Chones.Keyboard
 {
-    public delegate void ShiftModifiedRoutedEventHandler(object sender, KeyboardShiftStateModifiedRoutedEventArgs e);
+    public delegate void ModifierChangedRoutedEventHandler(object sender, ModifierChangedRoutedEventArgs e);
 
     /// <summary>
     /// Routed Event for a shift state change
     /// </summary>
-    public class KeyboardShiftStateModifiedRoutedEventArgs : RoutedEventArgs
+    public class ModifierChangedRoutedEventArgs : RoutedEventArgs
     {
         /// <summary>
         /// Get if shifted
         /// </summary>
-        public bool Shifted
+        public bool Applied
         { get; private set; }
 
         /// <summary>
@@ -28,10 +28,10 @@ namespace Chones.Keyboard
         /// <param name="source">The source of the routed event</param>
         /// <param name="shifted">get if the we are shifted or not</param>
         /// <param name="locked">if shifted, is the shift a shift lock</param>
-        public KeyboardShiftStateModifiedRoutedEventArgs(RoutedEvent routedEvent, object source, bool shifted, bool locked)
+        public ModifierChangedRoutedEventArgs(RoutedEvent routedEvent, object source, bool shifted, bool locked)
             : base(routedEvent, source)
         {
-            Shifted = shifted;
+            Applied = shifted;
             Locked = locked;
         }
     }

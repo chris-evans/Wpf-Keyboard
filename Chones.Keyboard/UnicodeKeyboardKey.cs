@@ -25,12 +25,16 @@ namespace Chones.Keyboard
         static UnicodeKeyboardKey()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(UnicodeKeyboardKey), new FrameworkPropertyMetadata(typeof(UnicodeKeyboardKey)));
+            ShiftOnCapsLockProperty.OverrideMetadata(typeof(UnicodeKeyboardKey), new FrameworkPropertyMetadata(true));
         }
 
         protected override void OnClick()
         {
+            var capsMatters = ShiftOnCapsLock && IsCapsLocked;
+            var setShiftMode = IsShifted ^ capsMatters;
+
             var sim = new InputSimulator();
-            if (IsShifted && !string.IsNullOrEmpty(ShiftedUnicodeText))
+            if (setShiftMode && !string.IsNullOrEmpty(ShiftedUnicodeText))
             { sim.Keyboard.TextEntry(ShiftedUnicodeText); }
             else if (!string.IsNullOrEmpty(UnshiftedText))
             { sim.Keyboard.TextEntry(UnshiftedText); }
