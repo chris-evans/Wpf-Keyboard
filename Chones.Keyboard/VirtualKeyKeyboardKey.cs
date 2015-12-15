@@ -22,9 +22,13 @@ namespace Chones.Keyboard
 
         protected override void OnClick()
         {
+            var modifier = (VirtualKeyCode)(0);
+
             var sim = new InputSimulator();
-            if (IsShifted)
-            { sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKey); }
+            if (IsShifted) modifier = VirtualKeyCode.SHIFT;
+            if (IsCapsLocked) modifier = VirtualKeyCode.CAPITAL;
+            if (modifier != 0)
+            { sim.Keyboard.ModifiedKeyStroke(modifier, VirtualKey); }
             else
             { sim.Keyboard.KeyPress(VirtualKey); }
 
