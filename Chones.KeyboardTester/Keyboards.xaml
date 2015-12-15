@@ -151,7 +151,7 @@
             <kbrd:UnicodeKeyboardKey UnshiftedContent="1" UnshiftedText="1" Grid.Row="2" Grid.Column="0"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="2" UnshiftedText="2" Grid.Row="2" Grid.Column="1"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="3" UnshiftedText="3" Grid.Row="2" Grid.Column="2"/>
-            <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="." Grid.Row="2" Grid.Column="3"/>
+            <kbrd:VirtualKeyKeyboardKey VirtualKey="UP" UnshiftedContent="up" Grid.Row="2" Grid.Column="3"/>
             <kbrd:UnicodeKeyboardKey UnshiftedContent="-" UnshiftedText="-" Grid.Row="2" Grid.Column="4"/>
 
             <kbrd:UnicodeKeyboardKey UnshiftedContent="0" UnshiftedText="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
