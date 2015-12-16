@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Rife.Keyboard
 {
+	[TemplatePart(Name = ContentPresenterPart, Type = typeof(ContentControl))]
 	public class Keyboard : ContentControl
 	{
+		#region Dependency Properties
 		public static readonly DependencyProperty IsShiftLockedProperty =
 			DependencyProperty.RegisterAttached("IsShiftLocked", typeof(bool), typeof(Keyboard));
 
@@ -24,7 +27,13 @@ namespace Rife.Keyboard
 
 		public static readonly DependencyProperty NumericStyleProperty =
 			DependencyProperty.RegisterAttached("NumericStyle", typeof(Style), typeof(Keyboard));
+		#endregion
 
+		public const string ContentPresenterPart = "PART_ContentPresenter";
+
+		private ContentPresenter _contentControl;
+
+		#region Properties
 		public bool IsShifted
 		{
 			get { return (bool)GetValue(IsShiftedProperty); }
@@ -60,10 +69,12 @@ namespace Rife.Keyboard
 			get { return (Style)GetValue(NumericStyleProperty); }
 			set { SetValue(NumericStyleProperty, value); }
 		}
+		#endregion
 
 		static Keyboard()
 		{
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(Keyboard), new FrameworkPropertyMetadata(typeof(Keyboard)));
+
 			EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ShiftModifierChangedProperty, new ModifierChangedRoutedEventHandler(OnShiftModified));
 			EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.CapsModifierChangedProperty, new ModifierChangedRoutedEventHandler(OnCapsModified));
 			EventManager.RegisterClassHandler(typeof(Keyboard), KeyboardKey.ClickEvent, new RoutedEventHandler(OnKeyClicked));
@@ -75,20 +86,35 @@ namespace Rife.Keyboard
 			IsTabStop = false;
 		}
 
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
+
+			if (!DesignerProperties.GetIsInDesignMode(this))
+			{
+				_contentControl = GetTemplateChild(ContentPresenterPart) as ContentPresenter;
+				SetKeyboardStyle();
+			}
+		}
+
 		private void SetKeyboardStyle()
 		{
+			if (_contentControl == null)
+			{ return; }
+
+			Style style = null;
+
 			switch (KeyboardState)
 			{
 				case KeyboardState.AlphaNumeric:
-					Style = AlphaNumericStyle;
+					style = AlphaNumericStyle;
 					break;
 				case KeyboardState.Numeric:
-					Style = NumericStyle;
-					break;
-				case KeyboardState.None:
-					Style = null;
+					style = NumericStyle;
 					break;
 			}
+
+			_contentControl.Style = style;
 		}
 
 		private static void OnShiftModified(object sender, ModifierChangedRoutedEventArgs e)

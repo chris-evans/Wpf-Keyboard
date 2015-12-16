@@ -22,6 +22,7 @@ namespace Rife.Keyboard
             get { return (string)GetValue(ShiftedUnicodeTextProperty); }
             set { SetValue(ShiftedUnicodeTextProperty, value); }
         }
+
         static UnicodeKeyboardKey()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(UnicodeKeyboardKey), new FrameworkPropertyMetadata(typeof(UnicodeKeyboardKey)));
