@@ -15,7 +15,7 @@
         </Setter>
     </Style>
 
-    <!-- Style for generic keyboard key's -->
+    <!-- Style for generic keyboard key -->
     <Style x:Key="KeyboardKeyStyle" TargetType="{x:Type local:KeyboardKey}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
         <Setter Property="Background" Value="White"/>
