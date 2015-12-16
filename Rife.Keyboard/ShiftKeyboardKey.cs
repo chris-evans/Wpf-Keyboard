@@ -4,8 +4,7 @@ namespace Rife.Keyboard
 {
     public class ShiftKeyboardKey : KeyboardKey
     {
-        public static readonly DependencyProperty IsShiftLockingProperty =
-            DependencyProperty.RegisterAttached(nameof(IsShiftLocking), typeof(object), typeof(ShiftKeyboardKey),
+        public static readonly DependencyProperty IsShiftLockingProperty = DependencyProperty.RegisterAttached("IsShiftLocking", typeof(object), typeof(ShiftKeyboardKey),
                 new PropertyMetadata(false));
 
         public bool IsShiftLocking

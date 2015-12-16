@@ -8,22 +8,22 @@ namespace Rife.Keyboard
 	public class Keyboard : ContentControl
 	{
 		public static readonly DependencyProperty IsShiftLockedProperty =
-			DependencyProperty.RegisterAttached(nameof(IsShiftLocked), typeof(bool), typeof(Keyboard));
+			DependencyProperty.RegisterAttached("IsShiftLocked", typeof(bool), typeof(Keyboard));
 
 		public static readonly DependencyProperty IsShiftedProperty =
-			DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(Keyboard), new PropertyMetadata(OnIsShiftedChanged));
+			DependencyProperty.RegisterAttached("IsShifted", typeof(bool), typeof(Keyboard), new PropertyMetadata(OnIsShiftedChanged));
 
 		public static readonly DependencyProperty IsCapsLockedProperty =
-			DependencyProperty.RegisterAttached(nameof(IsCapsLocked), typeof(bool), typeof(Keyboard), new PropertyMetadata(OnIsCapsLockedChanged));
+			DependencyProperty.RegisterAttached("IsCapsLocked", typeof(bool), typeof(Keyboard), new PropertyMetadata(OnIsCapsLockedChanged));
 
 		public static readonly DependencyProperty KeyboardStateProperty =
-			DependencyProperty.RegisterAttached(nameof(KeyboardState), typeof(KeyboardState), typeof(Keyboard), new PropertyMetadata(KeyboardState.None, OnKeyboardStateChanged));
+			DependencyProperty.RegisterAttached("KeyboardState", typeof(KeyboardState), typeof(Keyboard), new PropertyMetadata(KeyboardState.None, OnKeyboardStateChanged));
 
 		public static readonly DependencyProperty AlphaNumericStyleProperty =
-			DependencyProperty.RegisterAttached(nameof(AlphaNumericStyle), typeof(Style), typeof(Keyboard));
+			DependencyProperty.RegisterAttached("AlphaNumericStyle", typeof(Style), typeof(Keyboard));
 
 		public static readonly DependencyProperty NumericStyleProperty =
-			DependencyProperty.RegisterAttached(nameof(NumericStyle), typeof(Style), typeof(Keyboard));
+			DependencyProperty.RegisterAttached("NumericStyle", typeof(Style), typeof(Keyboard));
 
 		public bool IsShifted
 		{
@@ -74,16 +74,6 @@ namespace Rife.Keyboard
 			Focusable = false;
 			IsTabStop = false;
 		}
-
-		//public override void OnApplyTemplate()
-		//{
-		//	base.OnApplyTemplate();
-
-		//	if (!DesignerProperties.GetIsInDesignMode(this))
-		//	{
-
-		//	}
-		//      }
 
 		private void SetKeyboardStyle()
 		{

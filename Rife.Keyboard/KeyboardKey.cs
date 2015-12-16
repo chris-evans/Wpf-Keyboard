@@ -16,28 +16,28 @@ namespace Rife.Keyboard
         /// Event indicating that the shift status has been activated
         /// </summary>
         public static readonly RoutedEvent ShiftModifierChangedProperty =
-            EventManager.RegisterRoutedEvent(nameof(ShiftModifierChanged), RoutingStrategy.Bubble, typeof(ModifierChangedRoutedEventHandler), typeof(KeyboardKey));
+            EventManager.RegisterRoutedEvent("ShiftModifierChanged", RoutingStrategy.Bubble, typeof(ModifierChangedRoutedEventHandler), typeof(KeyboardKey));
 
         public static readonly RoutedEvent CapsModifierChangedProperty =
-            EventManager.RegisterRoutedEvent(nameof(CapsModifierChanged), RoutingStrategy.Bubble, typeof(ModifierChangedRoutedEventHandler), typeof(KeyboardKey));
+            EventManager.RegisterRoutedEvent("CapsModifierChanged", RoutingStrategy.Bubble, typeof(ModifierChangedRoutedEventHandler), typeof(KeyboardKey));
 
         public static readonly DependencyProperty IsShiftedProperty =
-            DependencyProperty.RegisterAttached(nameof(IsShifted), typeof(bool), typeof(KeyboardKey),
+            DependencyProperty.RegisterAttached("IsShifted", typeof(bool), typeof(KeyboardKey),
                 new PropertyMetadata(false, new PropertyChangedCallback(OnIsShiftedChanged)));
 
         public static readonly DependencyProperty IsCapsLockedProperty =
-            DependencyProperty.RegisterAttached(nameof(IsCapsLocked), typeof(bool), typeof(KeyboardKey),
+            DependencyProperty.RegisterAttached("IsCapsLocked", typeof(bool), typeof(KeyboardKey),
                 new PropertyMetadata(false, new PropertyChangedCallback(OnIsCapsLockedChanged)));
 
         public static readonly DependencyProperty ShiftOnCapsLockProperty =
-            DependencyProperty.RegisterAttached(nameof(ShiftOnCapsLock), typeof(bool), typeof(KeyboardKey),
+            DependencyProperty.RegisterAttached("ShiftOnCapsLock", typeof(bool), typeof(KeyboardKey),
                 new PropertyMetadata(false));
 
         public static readonly DependencyProperty ShiftedContentProperty =
-            DependencyProperty.RegisterAttached(nameof(ShiftedContent), typeof(object), typeof(KeyboardKey));
+            DependencyProperty.RegisterAttached("ShiftedContent", typeof(object), typeof(KeyboardKey));
 
         public static readonly DependencyProperty UnshiftedContentProperty =
-            DependencyProperty.RegisterAttached(nameof(UnshiftedContent), typeof(object), typeof(KeyboardKey));
+			DependencyProperty.RegisterAttached("UnshiftedContent", typeof(object), typeof(KeyboardKey));
 
         public event ModifierChangedRoutedEventHandler ShiftModifierChanged
         {

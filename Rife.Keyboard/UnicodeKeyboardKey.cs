@@ -6,10 +6,10 @@ namespace Rife.Keyboard
     public class UnicodeKeyboardKey : KeyboardKey
     {
         public static readonly DependencyProperty UnshiftedTextProperty =
-            DependencyProperty.RegisterAttached(nameof(UnshiftedText), typeof(string), typeof(UnicodeKeyboardKey));
+            DependencyProperty.RegisterAttached("UnshiftedText", typeof(string), typeof(UnicodeKeyboardKey));
 
         public static readonly DependencyProperty ShiftedUnicodeTextProperty =
-            DependencyProperty.RegisterAttached(nameof(ShiftedUnicodeText), typeof(string), typeof(UnicodeKeyboardKey));
+            DependencyProperty.RegisterAttached("ShiftedUnicodeText", typeof(string), typeof(UnicodeKeyboardKey));
 
         public string UnshiftedText
         {

@@ -7,7 +7,7 @@ namespace Rife.Keyboard
     public class VirtualKeyKeyboardKey : KeyboardKey
     {
         public static readonly DependencyProperty VirtualKeyProperty =
-          DependencyProperty.RegisterAttached(nameof(VirtualKey), typeof(VirtualKeyCode), typeof(VirtualKeyKeyboardKey));
+          DependencyProperty.RegisterAttached("VirtualKey", typeof(VirtualKeyCode), typeof(VirtualKeyKeyboardKey));
 
         public VirtualKeyCode VirtualKey
         {
@@ -16,9 +16,7 @@ namespace Rife.Keyboard
         }
 
         static VirtualKeyKeyboardKey()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(VirtualKeyKeyboardKey), new FrameworkPropertyMetadata(typeof(VirtualKeyKeyboardKey)));
-        }
+        { DefaultStyleKeyProperty.OverrideMetadata(typeof(VirtualKeyKeyboardKey), new FrameworkPropertyMetadata(typeof(VirtualKeyKeyboardKey))); }
 
         protected override void OnClick()
         {
