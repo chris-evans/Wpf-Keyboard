@@ -109,7 +109,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rife.Keyboard\Rife.Keyboard.csproj">
+    <ProjectReference Include="..\Chones.Keyboard\Rife.Keyboard.csproj">
       <Project>{efc4cf3a-a974-4e68-b8a3-2b3cd2a42484}</Project>
       <Name>Rife.Keyboard</Name>
     </ProjectReference>
